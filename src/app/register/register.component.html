@@ -1,0 +1,49 @@
+<div class="mt-4 row justify-content-center text-center">
+    <h1>Register</h1>
+</div>
+<hr />
+<div class="row justify-content-center align-items-center h-100">
+    <div class="col col-sm-8 col-md-8 col-lg-6 col-xl-4">
+        <form class="signup-form" [formGroup]="signupForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" formControlName="txtname" id="txtname" placeholder="Enter Name">
+                <div *ngIf="f.txtname.touched && f.txtname.invalid" class="alert alert-danger">
+                    <div *ngIf="f.txtname.errors?.required">Name is required</div>
+                </div>
+            </div>
+            <div class="form-group mt-2">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" formControlName="txtemail" placeholder="Enter Email">
+                <div *ngIf="f.txtemail.touched && f.txtemail.invalid" class="alert alert-danger">
+                    <div *ngIf="f.txtemail.errors?.required">Email is required</div>
+                    <div *ngIf="f.txtemail.errors?.email">Please Enter correct email</div>
+                </div>
+            </div>
+            <div class="form-group mt-2">
+                <label for="phone">Phone number</label>
+                <ngx-intl-tel-input [cssClass]="'form-control phone-control'" [preferredCountries]="preferredCountries"
+                    [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true"
+                    [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                    [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.Canada" [phoneValidation]="true"
+                    [separateDialCode]="false" [numberFormat]="PhoneNumberFormat.National" name="phone"  formControlName="txtphone">
+                </ngx-intl-tel-input>
+                <div *ngIf="f.txtphone.touched && f.txtphone.invalid" class="alert alert-danger">
+                    <div *ngIf="f.txtphone.errors?.required">Phone number is required</div>
+                    <div *ngIf="f.txtphone.dirty">Please enter correct number</div>
+                </div>
+            </div>
+            <div class="form-group mt-2">
+                <label for="email">Password</label>
+                <input type="password" class="form-control" placeholder="Enter password" formControlName="txtpassword">
+                <div *ngIf="f.txtpassword.touched && f.txtpassword.invalid" class="alert alert-danger">
+                    <div *ngIf="f.txtpassword.errors?.required">Password is required</div>
+                    <div *ngIf="f.txtpassword.errors?.minlength">Password must be atleast 6 characters long</div>
+                </div>
+            </div>
+            <div class="form-group mt-4 text-center">
+                <button type="submit" class="btn btn-primary col-6" [disabled]="!signupForm.valid" (click)="signup()">Signup</button>
+            </div>
+        </form>
+    </div>
+</div>

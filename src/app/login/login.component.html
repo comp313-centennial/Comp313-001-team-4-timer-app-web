@@ -1,0 +1,27 @@
+<div class="mt-4 row justify-content-center text-center">
+  <h1>Login</h1>
+</div>
+<hr />
+<div class="row justify-content-center align-items-center h-100">
+  <div class="col col-sm-8 col-md-8 col-lg-6 col-xl-4">
+    <form class="login-form" [formGroup]="loginForm">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control " placeholder="Enter email" formControlName="txtemail">
+        <div *ngIf="f.txtemail.touched && f.txtemail.invalid" class="alert alert-danger">
+          <div *ngIf="f.txtemail.errors?.required">Email is required</div>
+        </div>
+      </div>
+      <div class="form-group mt-2">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" placeholder="Password" formControlName="txtpassword">
+        <div *ngIf="f.txtpassword.touched && f.txtpassword.invalid" class="alert alert-danger">
+          <div *ngIf="f.txtpassword.errors?.required">Password is required</div>
+        </div>
+      </div>
+      <div class="form-group mt-4 text-center">
+        <button type="submit" class="btn btn-primary col-6" [disabled]="!loginForm.valid" (click)="onSignin()">Login</button>
+      </div>
+    </form>
+  </div>
+</div>
