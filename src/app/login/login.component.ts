@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
         console.log(this.firebaseservice.isLoggedIn);
         this.router.navigateByUrl('/home');
       })
-
     }
    
   }

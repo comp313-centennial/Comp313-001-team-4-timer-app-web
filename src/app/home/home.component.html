@@ -1,10 +1,11 @@
 <button (click)="logout()"> logout </button>
 <form [formGroup]="setupTimerForm" class="formTimer">
     <div class="form-group">
-        <label for="name">Enter value for timer</label>
-        <input type="text" class="form-control" formControlName="timeLeft" id="timeLeft" style="width: 100px;">
+        <label for="name">Enter value for timer in seconds</label>
+        <input type="text" class="form-control" formControlName="timeLeft" id="timeLeft" style="width: 200px;" [(ngModel)] = "timeLeftForm">
     </div>
     <p id="timer">{{timeLeft}} Seconds Left....</p>
-    <button id="submitButton" type="submit"  (click)="startTimer()">Start Timer</button>
-    <button id="pauseButton" (click)='pauseTimer()'>Pause Timer</button>
+    <button id="submitButton" type="submit"  (click)="startTimer()">Start</button>
+    <button id="pauseButton" (click)='pauseTimer()'>Pause</button>
+    <button id="resetButton" (click)='resetTimer()'>Reset</button>
 </form>
