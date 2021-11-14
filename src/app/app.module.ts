@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import {NgxIntlTelInputModule} from 'ngx-intl-tel-input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
