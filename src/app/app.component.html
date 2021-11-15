@@ -17,9 +17,13 @@
 <app-home *ngIf="isSignedIn" (islogout)="handleLogout()" ></app-home> -->
 
 <nav class="navbar navbar-expand navbar-dark bg-dark">
-  <div class="navbar-nav">
-    <a class="nav-item nav-link" routerLink="/login">Login</a>
-    <a class="nav-item nav-link" routerLink="/register">Register</a>
+  <div class="navbar-nav" *ngIf="!isSignedIn">
+    <a *ngIf="!isSignedIn" class="nav-item nav-link" routerLink="/login">Login</a>
+    <a *ngIf="!isSignedIn" class="nav-item nav-link" routerLink="/register">Register</a>
+    
+</div>
+<div class="navbar-nav" *ngIf="isSignedIn">
+  <a *ngIf="isSignedIn" class="nav-item nav-link float-right" (click)="handleLogout()">Logout</a>
 </div>
 </nav>
 <div class="container-fluid h-100 bg-light text-dark">

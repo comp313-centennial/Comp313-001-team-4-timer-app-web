@@ -58,6 +58,8 @@ export class RegisterComponent implements OnInit {
             this.router.navigateByUrl('/home');
           }
         }
+      },(error)=>{
+        alert(error.message);
       })
 
     }

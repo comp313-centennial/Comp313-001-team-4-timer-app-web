@@ -1,5 +1,6 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { FirebaseService } from './services/firebase.service';
 @Component({
@@ -11,12 +12,13 @@ export class AppComponent implements OnInit{
   title = 'timerApp';
 
   isSignedIn=false;
-  constructor(public firebaseservice:FirebaseService){
+  constructor(public firebaseservice:FirebaseService,private router:Router){
 
   }
   ngOnInit(){
-    if(localStorage.getItem('user')!==null){
+    if(sessionStorage.getItem('user')!==null){
       this.isSignedIn=true;
+      this.router.navigateByUrl('/home');
 
     }
     else
@@ -48,6 +50,8 @@ export class AppComponent implements OnInit{
 
   handleLogout(){
     this.isSignedIn=false;
+    this.firebaseservice.logout();
+    this.router.navigateByUrl('/');
   }
 }
 

@@ -30,10 +30,7 @@ export class HomeComponent implements OnInit {
     }
   }
   
-  logout() {
-    this.firebaseservice.logout();
-    this.router.navigateByUrl('/');
-  }
+
   startTimer() {
     this.timeLeft = this.setupTimerForm.get('timeLeft')?.value;
     if(this.orginialTimerValue == 0)
