@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     }
   }
   
-
+  //method for startTimer
   startTimer() {
     this.timeLeft = this.setupTimerForm.get('timeLeft')?.value;
     if(this.orginialTimerValue == 0)
@@ -46,12 +46,14 @@ export class HomeComponent implements OnInit {
     },1000)
   }
 
+  // method for PauseTimer
   pauseTimer() {    
     console.log(this.currentTimerValue)
     this.timeLeftForm = this.currentTimerValue;
     clearInterval(this.interval);
   }
 
+  // method for resetTimer
   resetTimer()
   {    
     console.log(this.orginialTimerValue);

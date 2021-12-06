@@ -2,7 +2,7 @@
 <form [formGroup]="setupTimerForm" class="formTimer">
     <div class="form-group">
         <label for="name">Enter value for timer in seconds</label>
-        <input type="text" class="form-control" formControlName="timeLeft" id="timeLeft" style="width: 200px;" [(ngModel)] = "timeLeftForm">
+        <input type="number" min="1" class="form-control" formControlName="timeLeft" id="timeLeft" style="width: 200px;" [(ngModel)] = "timeLeftForm">
     </div>
     <p id="timer">{{timeLeft}} Seconds Left....</p>
     <button id="submitButton" type="submit"  (click)="startTimer()">Start</button>
