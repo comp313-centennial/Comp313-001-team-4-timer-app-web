@@ -1,16 +1,21 @@
+
+.timer-seconds{
+    margin-top:50px;
+    margin-bottom: 50px;
+}
+.timer-card{
+    margin-top: 50px;
+}
 #submitButton{
-    padding: 10px 10px 10px 10px;
-    margin: 10px 10px 10px 10px;
+    margin-right: 20px;
 }
 #pauseButton{
-    padding: 10px 10px 10px 10px;
-    margin: 10px 10px 10px 10px;
+    margin-right: 20px;
 }
-#timer{
-    padding: 10px 10px 10px 10px;
-    margin: 100px 50px 100px 200px;
+.timer-template-card{
+    margin-top: 50px;
 }
-#resetButton{
-    padding: 10px 10px 10px 10px;
-    margin: 10px 10px 10px 10px;
+.template-button{
+    padding: 15px 10px 15px 10px;
+    width:300px;
 }

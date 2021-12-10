@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRoutingModule } from './app-routing.module';
-import { AngularFireModule} from '@angular/fire/compat'
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AppComponent } from './app.component';
 import { FirebaseService } from './services/firebase.service';
 import { HomeComponent } from './home/home.component';
@@ -36,6 +38,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       appId: "1:1053236477699:web:0700473b4abfc0c78bf336",   
       measurementId: "G-TPM9WXJ0G8"  
     }),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule,
     BrowserAnimationsModule
   ],
   providers: [FirebaseService],

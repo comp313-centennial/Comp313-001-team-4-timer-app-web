@@ -1,11 +1,39 @@
+<div class="row">
+    <div class="col-md-6 timer-card" align="right">
+        <div class="card" style="width:500px">
+            <div class="card-body">
+                <form [formGroup]="setupTimerForm" class="formTimer">
+                    <div class="form-group ">
+                        <label for="name">Enter value for timer in seconds</label>
+                        <input type="number" min="1" class="form-control col-12 mt-4" formControlName="timeLeft"
+                            id="timeLeft" [(ngModel)]="timeLeftForm">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 timer-seconds" align="center">
+                            <h3>{{timeLeft}} Seconds Left....</h3>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12" align="center">
+                            <button id="submitButton" type="submit" class="btn btn-success col-3"
+                                (click)="startTimer(undefined)">Start</button>
+                            <button id="pauseButton" class="btn btn-warning col-3 "
+                                (click)='pauseTimer()'>Pause</button>
+                            <button id="resetButton" class="btn btn-dark col-3" (click)='resetTimer()'>Reset</button>
+                        </div>
 
-<form [formGroup]="setupTimerForm" class="formTimer">
-    <div class="form-group">
-        <label for="name">Enter value for timer in seconds</label>
-        <input type="number" min="1" class="form-control" formControlName="timeLeft" id="timeLeft" style="width: 200px;" [(ngModel)] = "timeLeftForm">
+                    </div>
+                </form>
+
+            </div>
+        </div>
     </div>
-    <p id="timer">{{timeLeft}} Seconds Left....</p>
-    <button id="submitButton" type="submit"  (click)="startTimer()">Start</button>
-    <button id="pauseButton" (click)='pauseTimer()'>Pause</button>
-    <button id="resetButton" (click)='resetTimer()'>Reset</button>
-</form>
+    <div class="col-md-4 timer-template-card" align="left">
+        <div class="btn-group-vertical" *ngIf="timerDefault">
+            <div *ngFor="let td of timerDefault"> 
+                <button class="btn btn btn-outline-dark template-button" (click)="startTimer(td.timerDuration)">{{ td.timerDescription}} - {{ td.timerDuration}}secs</button>
+            </div>
+        </div>
+        
+    </div>
+</div>
