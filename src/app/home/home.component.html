@@ -23,6 +23,9 @@
                             <button id="pauseButton" class="btn btn-warning col-3 "
                                 (click)='pauseTimer()'>Pause</button>
                             <button id="resetButton" class="btn btn-dark col-3" (click)='resetTimer()'>Reset</button>
+                            <div *ngIf="this.shareButton">
+                            <button id="resetButton" class="btn btn-primary col-3" (click)="shareTimer()">Share</button>
+                            </div>
                         </div>
 
                     </div>

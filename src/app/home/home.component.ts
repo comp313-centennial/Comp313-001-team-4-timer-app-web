@@ -18,6 +18,8 @@ export class HomeComponent implements OnInit {
   orginialTimerValue : number = 0;
   currentTimerValue: number = 0;
   playSound:boolean=false;
+  shareButton: boolean=true;
+  user: any;
   
   @Output() islogout = new EventEmitter<void>()
   constructor(public firebaseservice: FirebaseService,private _formBuilder: FormBuilder,private router:Router) {
@@ -29,6 +31,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // console.log(sessionStorage.getItem('user'));
     if(sessionStorage.getItem('user')!==null){
+      this.user = sessionStorage.getItem('user');
+      if(this.user.getItem('userType') == "instructor")
+      this.shareButton = true
       this.router.navigateByUrl('/home');
     }
     this.firebaseservice.getDefaultTimer().subscribe(res=>{
@@ -86,6 +91,11 @@ export class HomeComponent implements OnInit {
     this.timeLeftForm = this.orginialTimerValue;
     clearInterval(this.interval);
     this.playSound=false;
+  }
+
+  shareTimer()
+  {
+    window.alert("Timer is shared");
   }
  
 }
