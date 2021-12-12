@@ -3,10 +3,13 @@
         <div class="card" style="width:500px">
             <div class="card-body">
                 <form [formGroup]="setupTimerForm" class="formTimer">
-                    <div class="form-group ">
-                        <label for="name">Enter value for timer in seconds</label>
-                        <input type="number" min="1" class="form-control col-12 mt-4" formControlName="timeLeft"
+                    <div class="form-group row">
+                        <label for="timeLeft" align="center">Enter value for timer in seconds</label>
+                        <input type="number" min="1" class="form-control-lg col-12 mt-4" formControlName="timeLeft"
                             id="timeLeft" [(ngModel)]="timeLeftForm">
+                    </div>
+                    <div class="form-group row">
+                        <input type="text"  class="form-control-lg col-12 mt-4" placeholder="Description" formControlName="desc">
                     </div>
                     <div class="row">
                         <div class="col-md-12 timer-seconds" align="center">
