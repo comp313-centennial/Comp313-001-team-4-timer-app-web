@@ -30,8 +30,9 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.valid){
      
         this.firebaseservice.signin(this.loginForm.get('txtemail')?.value,this.loginForm.get('txtpassword')?.value).then(res=>{
-          console.log(this.firebaseservice.isLoggedIn);
+          console.log(this.firebaseservice.isLoggedIn);         
           this.router.navigateByUrl('/home');
+          
         },
         (error)=>{
           console.log('here');         

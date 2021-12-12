@@ -32,4 +32,10 @@ export class FirebaseService {
   getDefaultTimer(){
     return this.angularFirestore.collection('timer_defaults').snapshotChanges();
   }
+  getUser(email:string)
+  {
+    const newheaders = { 'content-type': 'application/json'}  
+    return this.http.post(`https://us-central1-timerapp-2c41e.cloudfunctions.net/user/getUser`,email,
+    {headers:newheaders})
+  }
 }

@@ -22,15 +22,19 @@
                                 (click)="startTimer(undefined)">Start</button>
                             <button id="pauseButton" class="btn btn-warning col-3 "
                                 (click)='pauseTimer()'>Pause</button>
-                            <button id="resetButton" class="btn btn-dark col-3" (click)='resetTimer()'>Reset</button>
-                            <div *ngIf="this.shareButton">
-                            <button id="resetButton" class="btn btn-primary col-3" (click)="shareTimer()">Share</button>
-                            </div>
+                            <button id="resetButton" class="btn btn-dark col-3" (click)='resetTimer()'>Reset</button>                            
                         </div>
 
                     </div>
                 </form>
-
+                <div *ngIf="this.shareButton">
+                    <form [formGroup]="shareTimerForm" class="shareTimerForm">
+                        <label for="shareEmailAddress" class="shareEmailLabel">Enter email address to share timer with</label>
+                        <input id="shareEmailAddress" type="email" class="form-control-lg" formControlName="shareEmailAddress"
+                            id="shareEmailAddress" >                    
+                            <button id="shareButton" class="btn btn-primary col-3" (click)="shareTimer()">Share</button>                        
+                    </form>  
+                </div>    
             </div>
         </div>
     </div>
@@ -39,7 +43,9 @@
             <div *ngFor="let td of timerDefault"> 
                 <button class="btn btn btn-outline-dark template-button" (click)="startTimer(td.timerDuration)">{{ td.timerDescription}} - {{ td.timerDuration}}secs</button>
             </div>
-        </div>
+        </div>        
+    </div>
+    <div class="col-md-4 timer-template-card" align="left">
         
     </div>
 </div>

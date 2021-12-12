@@ -15,10 +15,11 @@ export class HomeComponent implements OnInit {
   timeLeftForm: number = 0;
   interval: any;
   setupTimerForm: FormGroup;
+  shareTimerForm: FormGroup;
   orginialTimerValue : number = 0;
   currentTimerValue: number = 0;
   playSound:boolean=false;
-  shareButton: boolean=true;
+  shareButton: boolean=false;
   user: any;
   
   @Output() islogout = new EventEmitter<void>()
@@ -27,14 +28,33 @@ export class HomeComponent implements OnInit {
       timeLeft:new FormControl(''),
       desc:new FormControl('')
     })
+    this.shareTimerForm = new FormGroup({
+      shareEmailAddress: new FormControl('')
+    })
    }
 
   ngOnInit(): void {
-    console.log("in home compo")
-    console.log(sessionStorage.getItem('user'));
     if(sessionStorage.getItem('user')!==null){
       this.user = sessionStorage.getItem('user');
-     /* if(this.user.getItem('userType') == "instructor")
+      console.log("in home compo print user") ;      
+      console.log(this.user);
+      console.log("check below value")
+      
+      let obj = JSON.parse(this.user)
+      console.log(obj.userType)
+      
+      this.firebaseservice.getUser(obj.email).subscribe((res:any)=>{
+        if(res)
+        {
+          console.log(res);
+          if(res?.userType){
+            console.log(res.userType);
+          }
+        }
+
+      })
+
+     /*if(this.user.getItem('userType') == "instructor")
       this.shareButton = true*/
       this.router.navigateByUrl('/home');
     }
@@ -95,8 +115,10 @@ export class HomeComponent implements OnInit {
     this.playSound=false;
   }
 
+  // method for share Timer
   shareTimer()
   {
+    console.log(this.shareTimerForm.get('shareEmailAddress')?.value);
     window.alert("Timer is shared");
   }
  
