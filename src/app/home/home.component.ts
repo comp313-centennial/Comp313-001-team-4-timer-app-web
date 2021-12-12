@@ -1,8 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
-import { FormGroup, FormControl, Validators,FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators,FormBuilder, EmailValidator } from '@angular/forms';
 import {Router} from '@angular/router';
 import {DefaultTimer} from '../default-timer.model';
+declare let Email:any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
   playSound:boolean=false;
   shareButton: boolean=false;
   user: any;
+  model: any;
   
   @Output() islogout = new EventEmitter<void>()
   constructor(public firebaseservice: FirebaseService,private _formBuilder: FormBuilder,private router:Router) {
@@ -111,6 +113,27 @@ export class HomeComponent implements OnInit {
   // method for share Timer
   shareTimer()
   {
+    this.model={
+      'subject': 'Shared the Timer',
+      'message': this.setupTimerForm.get('desc')?.value,
+      'email': this.shareTimerForm.get('shareEmailAddress')?.value,
+      'time': this.setupTimerForm.get('timeLeft')?.value,
+    }
+   Email.send({
+      Host : 'smtp.elasticemail.com',
+      Username : 'tanvigupta910@gmail.com',
+      Password : 'AAC44224DE37F1B9DAD1BDEE03185D9DBB7E',
+      To : this.model.email,
+      From : 'tanvigupta910@gmail.com',
+      Subject : this.model.subject,
+      Body : `
+      <i>This is a shared Timer from your instructor.</i> <br/> 
+      <b>Shared to Email: </b>${this.model.email}<br /> 
+      <b>Subject: </b>
+      ${this.model.subject}<br /> <b>Message:</b> 
+      <br /> The description of the timer is ${this.model.message} <br/>
+      The time is ${this.model.time} <br><br> <b>~End of Message.~</b> `
+    });
     window.alert("Timer is shared to " + this.shareTimerForm.get('shareEmailAddress')?.value);
   }
  
