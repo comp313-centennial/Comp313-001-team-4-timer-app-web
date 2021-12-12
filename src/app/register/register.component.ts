@@ -27,8 +27,7 @@ export class RegisterComponent implements OnInit {
       txtname:new FormControl('',[Validators.required]),
       txtemail:new FormControl('',[Validators.required,Validators.email]),
       txtphone:new FormControl(undefined,[Validators.required,Validators.maxLength(10)]),
-      txtpassword:new FormControl('',[Validators.required,Validators.minLength(6)]),
-      usertype:new FormControl('',[Validators.required]),
+      txtpassword:new FormControl('',[Validators.required,Validators.minLength(6)])
     })
   }
 
@@ -46,13 +45,11 @@ export class RegisterComponent implements OnInit {
       this.phone=this.signupForm.get('txtphone')?.value?.e164Number;
       this.email=this.signupForm.get('txtemail')?.value;
       this.password=this.signupForm.get('txtpassword')?.value;
-      this.usertype=this.signupForm.get('usertype')?.value;
       this.user={
         'phone':this.phone,
         'email':this.email,
         'name':this.name,
-        'password':this.password,
-        'userType':this.usertype
+        'password':this.password
       };
       console.log("before saving user");
       console.log(this.user);

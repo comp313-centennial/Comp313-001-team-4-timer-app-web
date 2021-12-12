@@ -41,13 +41,6 @@
                     <div *ngIf="f.txtpassword.errors?.minlength">Password must be atleast 6 characters long</div>
                 </div>
             </div>
-            <div class="form-group mt-2">
-                <label for="userType">User Type</label>
-                <select name="userType" formControlName="userype">
-                    <option selected="selected" value="instructor">Instructor</option>
-                    <option value="null">Non-Istructor</option>
-                </select>
-            </div>
             <div class="form-group mt-4 text-center">
                 <button type="submit" class="btn btn-primary col-6" [disabled]="!signupForm.valid" (click)="signup()">Signup</button>
             </div>

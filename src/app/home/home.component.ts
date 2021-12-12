@@ -35,27 +35,20 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     if(sessionStorage.getItem('user')!==null){
-      this.user = sessionStorage.getItem('user');
-      console.log("in home compo print user") ;      
-      console.log(this.user);
-      console.log("check below value")
-      
-      let obj = JSON.parse(this.user)
-      console.log(obj.email)
-    
+      this.user = sessionStorage.getItem('user');      
+      let obj = JSON.parse(this.user)    
       this.firebaseservice.getUser(obj.email).subscribe((res:any)=>{
         if(res)
         {
-          console.log(res);
           if(res?.userType){
-            console.log(res.userType);
+            if(res.userType == "instructor")
+            this.shareButton = true
           }
         }
 
       })
 
-     /*if(this.user.getItem('userType') == "instructor")
-      this.shareButton = true*/
+    
       this.router.navigateByUrl('/home');
     }
     this.firebaseservice.getDefaultTimer().subscribe(res=>{
@@ -118,8 +111,7 @@ export class HomeComponent implements OnInit {
   // method for share Timer
   shareTimer()
   {
-    console.log(this.shareTimerForm.get('shareEmailAddress')?.value);
-    window.alert("Timer is shared");
+    window.alert("Timer is shared to " + this.shareTimerForm.get('shareEmailAddress')?.value);
   }
  
 }
