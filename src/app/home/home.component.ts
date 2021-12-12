@@ -79,15 +79,16 @@ export class HomeComponent implements OnInit {
       if(this.timeLeft > 0) {
         this.timeLeft--;
         this.currentTimerValue = this.timeLeft;
-      } else {
-        this.timeLeft = 0;
-        this.currentTimerValue = this.timeLeft;
-        if(!this.playSound)
+        if(this.timeLeft < 5)
+        {
         {
           let audio: HTMLAudioElement = new Audio('https://drive.google.com/uc?export=download&id=1M95VOpto1cQ4FQHzNBaLf0WFQglrtWi7');
           audio.play();
-          this.playSound=true;
         }
+        }
+      } else {
+        this.timeLeft = 0;
+        this.currentTimerValue = this.timeLeft;        
       }
     },1000)
     this.playSound=false;
