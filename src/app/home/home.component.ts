@@ -25,15 +25,17 @@ export class HomeComponent implements OnInit {
   constructor(public firebaseservice: FirebaseService,private _formBuilder: FormBuilder,private router:Router) {
     this.setupTimerForm= new FormGroup({
       timeLeft:new FormControl(''),
+      desc:new FormControl('')
     })
    }
 
   ngOnInit(): void {
-    // console.log(sessionStorage.getItem('user'));
+    console.log("in home compo")
+    console.log(sessionStorage.getItem('user'));
     if(sessionStorage.getItem('user')!==null){
       this.user = sessionStorage.getItem('user');
-      if(this.user.getItem('userType') == "instructor")
-      this.shareButton = true
+     /* if(this.user.getItem('userType') == "instructor")
+      this.shareButton = true*/
       this.router.navigateByUrl('/home');
     }
     this.firebaseservice.getDefaultTimer().subscribe(res=>{
