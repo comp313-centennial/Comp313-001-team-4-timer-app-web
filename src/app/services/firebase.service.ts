@@ -35,7 +35,8 @@ export class FirebaseService {
   getUser(email:string)
   {
     const newheaders = { 'content-type': 'application/json'}  
-    return this.http.post(`https://us-central1-timerapp-2c41e.cloudfunctions.net/user/getUser`,email,
-    {headers:newheaders})
+    return this.http.post(`https://us-central1-timerapp-2c41e.cloudfunctions.net/user/getUser`,{'email':email},{
+      headers:newheaders
+    })
   }
 }

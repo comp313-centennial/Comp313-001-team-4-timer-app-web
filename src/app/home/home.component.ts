@@ -41,8 +41,8 @@ export class HomeComponent implements OnInit {
       console.log("check below value")
       
       let obj = JSON.parse(this.user)
-      console.log(obj.userType)
-      
+      console.log(obj.email)
+    
       this.firebaseservice.getUser(obj.email).subscribe((res:any)=>{
         if(res)
         {
